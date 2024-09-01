@@ -9,11 +9,13 @@ import (
 func main() {
 	died := died.New()
 
+	// As you can see, it is possible to pass `app` before the required dependencies.
+	died.Inject(app)
 	died.Inject(dep1)
 	died.Inject(dep2)
 	died.Inject(dep3)
-	died.Inject(app)
 
+	// After providing all dependencies, run `Invoke`.
 	died.Invoke()
 }
 
