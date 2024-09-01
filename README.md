@@ -1,6 +1,6 @@
 # DIED
 
-A lightweight dependency resolver package for GO.
+A lightweight dependency injection package for GO.
 
 ## How to use
 
