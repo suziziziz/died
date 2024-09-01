@@ -12,6 +12,7 @@ type Died struct {
 	instances map[reflect.Type]reflect.Value
 }
 
+// Instances a new DIED
 func New() *Died {
 	return &Died{}
 }
