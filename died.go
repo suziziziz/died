@@ -4,7 +4,12 @@ import (
 	"reflect"
 )
 
-type Died struct {
+type Died interface {
+	Inject(function any)
+	Invoke()
+}
+
+type died struct {
 	functions []any
 	args      [][]reflect.Type
 	returns   [][]reflect.Type
@@ -13,6 +18,6 @@ type Died struct {
 }
 
 // Instances a new DIED
-func New() *Died {
-	return &Died{}
+func New() Died {
+	return &died{}
 }

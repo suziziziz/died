@@ -3,7 +3,7 @@ package died
 import "reflect"
 
 // Initialize injection of dependencies
-func (d *Died) Invoke() {
+func (d *died) Invoke() {
 	d.instances = make(map[reflect.Type]reflect.Value)
 
 	for fnIdx, fn := range d.functions {

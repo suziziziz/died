@@ -14,7 +14,7 @@ import (
 // Arguments must be the same as the return types of the provided dependencies.
 //
 // No need to sort, DIED will do it for you.
-func (d *Died) Inject(function any) {
+func (d *died) Inject(function any) {
 	fn := reflect.TypeOf(function)
 
 	if fn.Kind() != reflect.Func {
