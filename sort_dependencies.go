@@ -10,11 +10,11 @@ func (d *Died) sortDependencies() {
 		apply := false
 
 		for _, ret := range rets {
-			argI := slices.IndexFunc(d.args, func(a []reflect.Type) bool {
-				return slices.Index(a, ret) != -1
+			hasArg := slices.ContainsFunc(d.args, func(a []reflect.Type) bool {
+				return slices.Contains(a, ret)
 			})
 
-			if argI != -1 {
+			if hasArg {
 				apply = true
 			}
 		}
