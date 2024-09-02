@@ -5,7 +5,7 @@ import (
 	"slices"
 )
 
-func (d *Died) sortDependencies() {
+func (d *died) sortDependencies() {
 	for idx, rets := range d.returns {
 		apply := false
 
