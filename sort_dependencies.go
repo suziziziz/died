@@ -7,19 +7,19 @@ import (
 
 func (d *died) sortDependencies() {
 	for idx, rets := range d.returns {
-		apply := false
+		idxArg := -1
 
 		for _, ret := range rets {
-			hasArg := slices.ContainsFunc(d.args, func(a []reflect.Type) bool {
+			hasArg := slices.IndexFunc(d.args, func(a []reflect.Type) bool {
 				return slices.Contains(a, ret)
 			})
 
-			if hasArg {
-				apply = true
+			if hasArg > idxArg {
+				idxArg = hasArg
 			}
 		}
 
-		if apply {
+		if idxArg != -1 {
 			saveFunction := d.functions[idx]
 			saveArgs := d.args[idx]
 			saveReturns := d.returns[idx]
@@ -28,9 +28,9 @@ func (d *died) sortDependencies() {
 			d.args = slices.Delete(d.args, idx, idx+1)
 			d.returns = slices.Delete(d.returns, idx, idx+1)
 
-			d.functions = slices.Insert(d.functions, 0, saveFunction)
-			d.args = slices.Insert(d.args, 0, saveArgs)
-			d.returns = slices.Insert(d.returns, 0, saveReturns)
+			d.functions = slices.Insert(d.functions, idxArg, saveFunction)
+			d.args = slices.Insert(d.args, idxArg, saveArgs)
+			d.returns = slices.Insert(d.returns, idxArg, saveReturns)
 		}
 	}
 }
