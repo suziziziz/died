@@ -7,6 +7,11 @@ import (
 type Died interface {
 	Inject(function any)
 	Invoke()
+
+	// # Require(requirerFn func(dependency Type)) any
+	//
+	// Require a instantied dependency, invoke all dependencies before call this.
+	Require(requirerFn any) any
 }
 
 type died struct {

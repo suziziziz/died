@@ -19,6 +19,10 @@ func main() {
 
 	// After providing all dependencies, run `Invoke`.
 	died.Invoke()
+
+	// You can require a dependency from the context after invoke
+	dep := died.Require(func(dep *Dep1) {}).(*Dep1)
+	log.Println((*dep)["what"])
 }
 
 type Dep1 map[string]string
