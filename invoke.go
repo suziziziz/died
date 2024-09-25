@@ -2,7 +2,6 @@ package died
 
 import "reflect"
 
-// Initialize injection of dependencies
 func (d *died) Invoke() {
 	d.instances = make(map[reflect.Type]reflect.Value)
 
