@@ -5,7 +5,17 @@ import (
 )
 
 type Died interface {
+	// Provide dependencies with the passed builder.
+	//
+	// You can provide more than one dependency per builder if necessary, but
+	// dependencies must have a unique return type.
+	//
+	// Arguments must be the same as the return types of the provided dependencies.
+	//
+	// No need to sort, DIED will do it for you.
 	Inject(function any)
+
+	// Initialize injection of dependencies
 	Invoke()
 
 	// # Require(requirerFn func(dependency Type)) any
